@@ -1,7 +1,7 @@
 const express = require("express");
 const path = require("path");
 const fs = require("fs");
-const apiRoutes = require("./Develop/routes/apiRoutes")
+const apiRoutes = require("./Develop/routes/apiRoutes");
 const htmlRoutes = require("./Develop/routes/htmlRoutes");
 
 const app = express();
@@ -21,8 +21,10 @@ const PORT = process.env.PORT || 3000;
 // }
 
 // Serve static files from the "public" directory
-app.use(express.static(path.join(__dirname, "public")));
-app.use("/api", apiRoutes)
+app.use(express.json());
+
+app.use(express.static("Develop/public"));
+app.use("/api", apiRoutes);
 app.use("/", htmlRoutes);
 
 app.listen(PORT, () => {
